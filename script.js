@@ -1,7 +1,33 @@
 import './faq-hero.css';
 
+// Every page uses the same primary navigation, even if an older page template
+// has a shorter version of the header.
 const menuButton = document.querySelector('.menu-button');
 const nav = document.querySelector('.main-nav');
+const primaryNavMarkup = `
+  <a href="about.html">Our home</a>
+  <a href="programs.html">Care &amp; play</a>
+  <a href="faq.html">FAQs</a>
+  <a href="safety.html">Safety</a>
+  <a href="resources.html">For families</a>
+  <a href="enrollment.html">Enrollment</a>
+  <a href="contact.html">Contact</a>
+  <a class="button button-small" href="contact.html">Schedule a tour <span>→</span></a>
+`;
+
+if (nav) {
+  nav.id = 'site-navigation';
+  nav.setAttribute('aria-label', 'Main navigation');
+  nav.innerHTML = primaryNavMarkup;
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  nav.querySelector(`a[href="${currentPage}"]`)?.setAttribute('aria-current', 'page');
+}
+
+if (menuButton) {
+  menuButton.setAttribute('aria-controls', 'site-navigation');
+  menuButton.setAttribute('aria-expanded', 'false');
+  menuButton.innerHTML = '<span class="menu-label">Menu</span><span class="menu-icon">☰</span>';
+}
 
 // One shared footer keeps the site polished and consistent as pages evolve.
 if (!document.querySelector('link[data-footer-styles]') && !document.querySelector('link[href="footer.css"]')) {

@@ -540,3 +540,7 @@ h1,h2,h3{color:var(--ink);text-shadow:0 2px 0 rgba(255,255,255,.85),0 7px 18px r
 /* Keep the tour call-to-action unmistakable against the clay invitation. */
 .tour .button-light,.tour .button-light:visited{color:#fffdfb!important;font-weight:700;text-shadow:0 1px 1px rgba(84,39,29,.34)}
 .tour .button-light span{color:#fffdfb!important}
+
+/* Shared sticky site navigation. */
+.site-header{position:sticky;top:0;z-index:1000;width:100%;flex-shrink:0}
+.main-nav>a[aria-current="page"]{color:var(--ink);background:#f8eae5}
