@@ -1,21 +1,47 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="site.webmanifest" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="T.L.C. Footprints Home Daycare offers warm, licensed family childcare in Elk Grove, California." />
+    <meta name="robots" content="index, follow" />
     <title>T.L.C. Footprints | Home Daycare in Elk Grove</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&family=Sacramento&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="enhancements.css" />
+    <link rel="stylesheet" href="footer.css" />
+    <link rel="stylesheet" href="tour-sky.css" />
+    <link rel="stylesheet" href="tic-tac-toe.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ChildCare",
+        "name": "T.L.C. Footprints Home Daycare",
+        "description": "Licensed family home daycare offering warm, small-group care for children in Elk Grove, California.",
+        "areaServed": { "@type": "City", "name": "Elk Grove, California" },
+        "openingHours": "Mo-Fr 07:30-18:00",
+        "audience": { "@type": "Audience", "audienceType": "Families with children ages 1 month through 5 years" },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Child care programs",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Infant care" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Toddler care" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Preschool care" } }
+          ]
+        }
+      }
+    </script>
   </head>
-  <body>
+  <body id="top">
     <header class="site-header">
       <a class="brand" href="#top" aria-label="T.L.C. Footprints home"> <span class="brand-mark">TLC</span><span>T.L.C. Footprints<small>HOME DAYCARE</small></span></a>
-      <button class="menu-button" aria-label="Open navigation" aria-expanded="false">Menu <span>☰</span></button>
-      <nav class="main-nav" aria-label="Main navigation">
+      <button class="menu-button" aria-label="Open navigation" aria-controls="site-navigation" aria-expanded="false"><span class="menu-label">Menu</span><span class="menu-icon">☰</span></button>
+      <nav class="main-nav" id="site-navigation" aria-label="Main navigation">
         <a href="about.html">Our home</a><a href="programs.html">Care &amp; play</a><a href="faq.html">FAQs</a><a href="contact.html">Contact</a>
         <a class="button button-small" href="contact.html">Schedule a tour <span>→</span></a>
       </nav>
@@ -27,14 +53,12 @@
           <source src="assets/hero-clay.mp4" type="video/mp4" />
         </video>
         <div class="hero-video-overlay" aria-hidden="true"></div>
-        <div class="leaf leaf-one">❧</div><div class="leaf leaf-two">❧</div>
         <div class="hero-copy">
-          <p class="eyebrow"><span></span> Licensed family home daycare · Elk Grove, CA</p>
+          <p class="eyebrow"><span></span> Licensed family home daycare <b>•</b> Elk Grove, CA</p>
           <p class="script">A little more like family</p>
           <h1 id="hero-title">Where little feet leave <em>everlasting</em> footprints.</h1>
           <p class="hero-intro">For the moments you can’t be there, we create a steady, loving rhythm where your child feels secure, cared for, and excited to learn.</p>
-          <div class="hero-actions"><a class="button" href="contact.html">Schedule a tour <span>→</span></a><a class="text-link" href="enrollment.html">Check availability <span>↗</span></a></div>
-          <div class="family-note"><span class="heart">♥</span><span><strong>A gentle first step for families</strong><br />Small-group care for ages 1 month–5 years</span></div>
+          <div class="hero-actions"><a class="button" href="contact.html">Schedule a tour <span>→</span></a><a class="text-link" href="enrollment.html#availability">Check availability <span>↗</span></a></div>
         </div>
         <div class="hero-visual">
           <div class="image-frame"><img src="assets/hero-daycare.png" alt="A mother sharing a quiet play moment with her toddler in a warm home setting" /></div>
@@ -48,14 +72,21 @@
       </section>
 
       <section class="highlights" aria-label="Daycare highlights">
-        <div><span class="highlight-icon">✦</span><p><strong>Licensed care</strong>California family home daycare</p></div>
-        <div><span class="highlight-icon">◒</span><p><strong>For little learners</strong>Ages 1 month to 5 years</p></div>
-        <div><span class="highlight-icon">♡</span><p><strong>Child Action accepted</strong>Supporting local families</p></div>
-        <div><span class="highlight-icon">☀</span><p><strong>Weekday care</strong>Mon–Fri · 7:30 AM–6:00 PM</p></div>
+        <div class="highlights-intro"><p>Care, made personal</p><span>Small by design. Thoughtful in every detail.</span></div>
+        <div class="highlight-list">
+          <article><span class="highlight-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.5 19 7v5.5c0 4.2-2.9 6.9-7 8-4.1-1.1-7-3.8-7-8V7l7-3.5Z"/><path d="m8.8 12 2.1 2.1 4.4-4.4"/></svg></span><p><strong>Licensed home</strong>California family daycare</p></article>
+          <article><span class="highlight-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.2"/><path d="M3.8 19c.5-3.2 2.2-5 5.2-5s4.7 1.8 5.2 5M14.4 15.4c.7-.6 1.5-.9 2.6-.9 2.1 0 3.4 1.4 3.7 3.6"/></svg></span><p><strong>Small group care</strong>More individual attention</p></article>
+          <article><span class="highlight-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 11.7c0 4-3.6 7.2-8 7.2-1.1 0-2.2-.2-3.1-.6L4 20l1.4-4.1C4.5 14.7 4 13.2 4 11.7c0-4 3.6-7.2 8-7.2s8 3.2 8 7.2Z"/><path d="M8.3 11.7h.1M12 11.7h.1M15.7 11.7h.1"/></svg></span><p><strong>Family communication</strong>Clear, caring updates</p></article>
+          <article><span class="highlight-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M7.5 11h9M7.5 15h5"/></svg></span><p><strong>Weekday care</strong>Mon–Fri · 7:30 AM–6 PM</p></article>
+        </div>
       </section>
 
       <section class="about section" id="about">
-        <div class="about-image"><div class="arch"><span>❋</span><p>Made with<br /><strong>love &amp; intention</strong></p></div></div>
+        <div class="about-image" data-scroll-art>
+          <img class="about-elk-art" src="assets/classroom-clay-pexels.jpg" alt="Preschool children playing with clay around a colorful table" />
+          <span class="about-orbit about-orbit-one" aria-hidden="true"></span>
+          <span class="about-orbit about-orbit-two" aria-hidden="true"></span>
+        </div>
         <div class="about-copy">
           <p class="eyebrow"><span></span> Welcome to our home</p>
           <h2>A cozy beginning for your child’s <em>bright future.</em></h2>
@@ -66,7 +97,7 @@
       </section>
 
       <section class="programs section" id="programs">
-        <div class="section-heading"><div><p class="eyebrow"><span></span> Thoughtful care, every stage</p><h2>Rooted in routine.<br /><em>Inspired by play.</em></h2></div><p>Gentle structure, loving attention, and room to explore—designed around the rhythms of real childhood.</p></div>
+        <div class="section-heading"><div><p class="eyebrow"><span></span> Thoughtful care, every stage</p><h2>Rooted in routine.<br /><em>Inspired by play.</em></h2></div><p>Gentle structure, loving attention, and room to explore, designed around the rhythms of real childhood.</p></div>
         <div class="program-grid">
           <article class="program-card cream"><span class="program-icon">◖</span><p class="card-label">1 month +</p><h3>Infant care</h3><p>Responsive, tender care that follows each baby’s individual rhythm.</p><a href="#tour" aria-label="Ask about infant care">Learn more <span>→</span></a></article>
           <article class="program-card sage"><span class="program-icon">⌒</span><p class="card-label">On the move</p><h3>Toddler care</h3><p>Safe discovery, growing independence, and lots of loving encouragement.</p><a href="#tour" aria-label="Ask about toddler care">Learn more <span>→</span></a></article>
@@ -75,21 +106,41 @@
         <div class="care-points"><span>◌ Learning through play</span><span>◌ Daily routines &amp; gentle structure</span><span>◌ Nutritious meals &amp; snacks</span><span>◌ Outdoor time &amp; creative play</span></div>
       </section>
 
-      <section class="reasons section">
-        <div class="reason-intro"><p class="eyebrow"><span></span> Peace of mind, every day</p><h2>Care you can<br /><em>feel good about.</em></h2><p>Choosing care is a big decision. We make it easier with a warm, dependable place where little ones can thrive and parents stay connected.</p></div>
-        <div class="reason-grid">
-          <article><span>⌂</span><h3>A loving home environment</h3><p>Comforting, familiar, and thoughtfully prepared for little ones.</p></article>
-          <article><span>☼</span><h3>Small group attention</h3><p>More one-on-one connection and care tailored to each child.</p></article>
-          <article><span>✦</span><h3>Engaging daily activities</h3><p>Creative, play-led experiences that support early development.</p></article>
-          <article><span>♡</span><h3>Clear parent communication</h3><p>Thoughtful updates so you always feel close to your child’s day.</p></article>
-          <article><span>✓</span><h3>Clean &amp; safe space</h3><p>A licensed setting built around safety, comfort, and consistency.</p></article>
-          <article><span>◌</span><h3>Dependable care</h3><p>A steady, caring routine your family can count on.</p></article>
+      <section class="availability-panel section" aria-labelledby="availability-title">
+        <div>
+          <p class="eyebrow">Program availability</p>
+          <h2 id="availability-title">A simple way to <em>start the conversation.</em></h2>
+          <p>Openings can change as children grow and schedules shift. Share the care you need and we’ll let you know the best next step for your family.</p>
+        </div>
+        <div class="availability-card">
+          <p class="availability-status"><span aria-hidden="true"></span> Accepting inquiries</p>
+          <ul>
+            <li><span>Infant care</span><strong>Ask about openings</strong></li>
+            <li><span>Toddler care</span><strong>Ask about openings</strong></li>
+            <li><span>Preschool care</span><strong>Ask about openings</strong></li>
+          </ul>
+          <a class="button" href="contact.html">Ask about care <span>→</span></a>
         </div>
       </section>
 
       <section class="tour section" id="tour">
-        <div class="tour-content"><p class="script">Now enrolling</p><h2>Come see why families<br />feel <em>at home</em> here.</h2><p>A tour is simply a chance to meet, ask the questions that matter to your family, and see whether T.L.C. Footprints feels like the right fit. No pressure—just a warm welcome.</p><a class="button button-light" href="contact.html">Schedule your tour <span>→</span></a><p class="cta-note">Usually the best next step before enrollment.</p></div>
-        <div class="tour-art" aria-hidden="true"><div class="moon">♡</div><div class="sprig">❧</div><p>There’s room<br />for your little one.</p></div>
+        <div class="tour-texture" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="tour-content"><p class="script">Now enrolling</p><h2>Come see why families<br />feel <em>at home</em> here.</h2><p>A tour is simply a chance to meet, ask the questions that matter to your family, and see whether T.L.C. Footprints feels like the right fit. No pressure, just a warm welcome.</p><a class="button button-light" href="contact.html">Schedule your tour <span>→</span></a><p class="cta-note">Usually the best next step before enrollment.</p></div>
+        <div class="tour-art tic-tac-toe" aria-label="Tic-tac-toe game">
+          <p class="game-label">A tiny game while you’re here</p>
+          <p class="game-status" aria-live="polite">You’re X. Pick a square.</p>
+          <div class="game-board" role="group" aria-label="Tic-tac-toe board">
+            <button type="button" class="game-cell" aria-label="Top left square"></button><button type="button" class="game-cell" aria-label="Top middle square"></button><button type="button" class="game-cell" aria-label="Top right square"></button>
+            <button type="button" class="game-cell" aria-label="Middle left square"></button><button type="button" class="game-cell" aria-label="Middle square"></button><button type="button" class="game-cell" aria-label="Middle right square"></button>
+            <button type="button" class="game-cell" aria-label="Bottom left square"></button><button type="button" class="game-cell" aria-label="Bottom middle square"></button><button type="button" class="game-cell" aria-label="Bottom right square"></button>
+          </div>
+          <button type="button" class="new-game">Play again ↻</button>
+        </div>
+      </section>
+
+      <section class="resource-section section" aria-labelledby="family-first-title">
+        <div class="section-heading"><div><p class="eyebrow">Family-first care</p><h2 id="family-first-title">The details that help<br><em>families feel ready.</em></h2></div><p>Choosing care is personal. We make room for the questions, routines, and transition details that matter to your child.</p></div>
+        <div class="resource-grid"><article><h3>Daily rhythm</h3><p>Meals and snacks, play, rest, outdoor time, stories, music, and meaningful connection give each day a familiar shape.</p><a class="text-link" href="programs.html">Explore daily care <span>→</span></a></article><article><h3>Safety &amp; health</h3><p>Bring your safety questions to a tour. We’ll walk through the current routines, policies, and care expectations together.</p><a class="text-link" href="safety.html">Explore safety <span>→</span></a></article><article><h3>Enrollment clarity</h3><p>We will discuss availability, tuition, schedules, and what to bring before you decide whether to enroll.</p><a class="text-link" href="resources.html">Family resources <span>→</span></a></article><article><h3>A personal visit</h3><p>There is no substitute for meeting, looking around, and seeing whether the setting feels right for your family.</p><a class="text-link" href="contact.html">Request a tour <span>→</span></a></article></div>
       </section>
 
       <section class="faq section" id="faq"><div class="faq-intro"><p class="eyebrow"><span></span> Helpful details</p><h2>Questions from<br /><em>growing families.</em></h2><p>Here are a few of the things parents often ask first.</p></div><div class="faq-list">
@@ -100,7 +151,7 @@
       </div></section>
     </main>
 
-    <footer id="contact"><div class="footer-top"><a class="brand footer-brand" href="#top"><span class="brand-mark">TLC</span><span>T.L.C. Footprints<small>HOME DAYCARE</small></span></a><p>Where little feet leave<br /><em>everlasting footprints.</em></p><a class="button" href="contact.html">Schedule a tour <span>→</span></a></div><div class="footer-grid"><div><p class="footer-label">Get in touch</p><a href="tel:+19165550148">(916) 555-0148</a><a href="mailto:hello@tlcfootprintsdaycare.com">hello@tlcfootprintsdaycare.com</a></div><div><p class="footer-label">Visit us</p><p>Elk Grove, California</p><p>Mon–Fri · 7:30 AM–6:00 PM</p></div><div><p class="footer-label">Explore</p><a href="enrollment.html">Enrollment info ↗</a><a href="faq.html">Parent FAQs ↗</a></div></div><div class="footer-bottom"><span>© 2026 T.L.C. Footprints Home Daycare</span><span>Licensed California Family Home Daycare</span></div></footer>
+    <footer id="contact" class="site-footer"><div class="footer-top"><a class="brand footer-brand" href="#top"><span class="brand-mark">TLC</span><span>T.L.C. Footprints<small>HOME DAYCARE</small></span></a><p>Where little feet leave<br /><em>everlasting footprints.</em></p><a class="button" href="contact.html">Schedule a tour <span>→</span></a></div><div class="footer-grid footer-grid-premium"><div><p class="footer-label">Get in touch</p><a href="tel:+19165550148">(916) 555-0148</a><a href="mailto:hello@tlcfootprintsdaycare.com">hello@tlcfootprintsdaycare.com</a><a class="footer-directions" href="https://www.google.com/maps/search/?api=1&amp;query=Elk+Grove%2C+California" target="_blank" rel="noopener noreferrer">Get directions <span>↗</span></a></div><div><p class="footer-label">Visit us</p><p>Elk Grove, California</p><p>Mon–Fri · 7:30 AM–6:00 PM</p><a class="footer-license" href="contact.html">Licensed California family home daycare</a></div><div><p class="footer-label">Explore</p><a href="about.html">Our home</a><a href="programs.html">Care &amp; play</a><a href="safety.html">Safety &amp; routines</a><a href="resources.html">For families</a><a href="enrollment.html">Enrollment info</a><a href="faq.html">Parent FAQs</a></div><a class="footer-map" href="https://www.google.com/maps/search/?api=1&amp;query=Elk+Grove%2C+California" target="_blank" rel="noopener noreferrer" aria-label="Open T.L.C. Footprints service area in Google Maps"><iframe title="T.L.C. Footprints service area in Elk Grove" src="https://www.google.com/maps?q=Elk+Grove,+California&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><span>Elk Grove, CA <b>Open map ↗</b></span></a></div><div class="footer-bottom"><span>© 2026 T.L.C. Footprints Home Daycare</span><nav aria-label="Footer legal links"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav><a class="footer-back-to-top" href="#top">Back to top <span aria-hidden="true">↑</span></a></div></footer>
     <script type="module" src="script.js"></script>
   </body>
 </html>
