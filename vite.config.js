@@ -23,13 +23,8 @@ export default defineConfig({
         index: 'index.html',
         about: 'about.html',
         programs: 'programs.html',
-        faq: 'faq.html',
         contact: 'contact.html',
-        enrollment: 'enrollment.html',
-        safety: 'safety.html',
-        resources: 'resources.html',
-        privacy: 'privacy.html',
-        terms: 'terms.html'
+        enrollment: 'enrollment.html'
       }
     }
   }

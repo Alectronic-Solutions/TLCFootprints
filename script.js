@@ -6,12 +6,8 @@ const menuButton = document.querySelector('.menu-button');
 const nav = document.querySelector('.main-nav');
 const primaryNavMarkup = `
   <a href="about.html">Our home</a>
-  <a href="programs.html">Care &amp; play</a>
-  <a href="faq.html">FAQs</a>
-  <a href="safety.html">Safety</a>
-  <a href="resources.html">For families</a>
+  <a href="programs.html">Programs</a>
   <a href="enrollment.html">Enrollment</a>
-  <a href="contact.html">Contact</a>
   <a class="button button-small" href="contact.html">Schedule a tour <span>→</span></a>
 `;
 
@@ -47,10 +43,10 @@ const footerMarkup = `
   <div class="footer-grid footer-grid-premium">
     <div><p class="footer-label">Get in touch</p><a href="tel:+19165550148">(916) 555-0148</a><a href="mailto:hello@tlcfootprintsdaycare.com">hello@tlcfootprintsdaycare.com</a><a class="footer-directions" href="https://www.google.com/maps/search/?api=1&amp;query=Elk+Grove%2C+California" target="_blank" rel="noopener noreferrer">Get directions <span>↗</span></a></div>
     <div><p class="footer-label">Visit us</p><p>Elk Grove, California</p><p>Mon–Fri · 7:30 AM–6:00 PM</p><a class="footer-license" href="contact.html">Licensed California family home daycare</a></div>
-    <div><p class="footer-label">Explore</p><a href="about.html">Our home</a><a href="programs.html">Care &amp; play</a><a href="enrollment.html">Enrollment info</a><a href="faq.html">Parent FAQs</a></div>
+    <div><p class="footer-label">Explore</p><a href="about.html">Our home &amp; safety</a><a href="programs.html">Programs &amp; daily rhythm</a><a href="enrollment.html">Enrollment &amp; FAQs</a><a href="contact.html">Contact us</a></div>
     <a class="footer-map" href="https://www.google.com/maps/search/?api=1&amp;query=Elk+Grove%2C+California" target="_blank" rel="noopener noreferrer" aria-label="Open T.L.C. Footprints service area in Google Maps"><iframe title="T.L.C. Footprints service area in Elk Grove" src="https://www.google.com/maps?q=Elk+Grove,+California&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe><span>Elk Grove, CA <b>Open map ↗</b></span></a>
   </div>
-  <div class="footer-bottom"><span>© 2026 T.L.C. Footprints Home Daycare</span><nav aria-label="Footer legal links"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="contact.html">Accessibility</a></nav><span>Designed by <a href="https://alectronicsolutions.com" target="_blank" rel="noopener noreferrer">Alectronic Solutions ↗</a></span></div>
+  <div class="footer-bottom"><span>© 2026 T.L.C. Footprints Home Daycare</span><span>Licensed California Family Home Daycare</span><span>Designed by <a href="https://alectronicsolutions.com" target="_blank" rel="noopener noreferrer">Alectronic Solutions ↗</a></span></div>
 `;
 
 document.querySelectorAll('footer').forEach((footer) => {
@@ -119,29 +115,25 @@ document.querySelectorAll('.faq-list details').forEach((item) => {
   });
 });
 
+const copyChecklistButton = document.querySelector('[data-copy-checklist]');
+if (copyChecklistButton) {
+  copyChecklistButton.addEventListener('click', async () => {
+    const checklist = [...document.querySelectorAll('.checklist-clipboard label > span:last-child')]
+      .map((item, index) => `${index + 1}. ${item.textContent.trim()}`)
+      .join('\n');
+    const status = document.querySelector('.clipboard-status');
+    try {
+      await navigator.clipboard.writeText(`T.L.C. Footprints tour checklist\n\n${checklist}`);
+      if (status) status.textContent = 'Copied, ready to paste into your notes.';
+      copyChecklistButton.innerHTML = 'Copied <span aria-hidden="true">✓</span>';
+    } catch {
+      if (status) status.textContent = 'Select the questions below to copy them manually.';
+    }
+  });
+}
+
 const heroVideo = document.querySelector('.hero-video');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-// Keep the practical family links visible in the primary navigation without
-// duplicating the same menu markup across every static document.
-const mainNavigation = document.querySelector('.main-nav');
-if (mainNavigation && !mainNavigation.querySelector('a[href="safety.html"]')) {
-  const safetyLink = document.createElement('a');
-  safetyLink.href = 'safety.html';
-  safetyLink.textContent = 'Safety';
-  safetyLink.dataset.familyLinks = 'true';
-  const resourcesLink = document.createElement('a');
-  resourcesLink.href = 'resources.html';
-  resourcesLink.textContent = 'For families';
-  resourcesLink.dataset.familyLinks = 'true';
-  const enrollmentLink = document.createElement('a');
-  enrollmentLink.href = 'enrollment.html#availability';
-  enrollmentLink.textContent = 'Enrollment';
-  enrollmentLink.dataset.enrollmentLink = 'true';
-  const contactLink = mainNavigation.querySelector('a[href="contact.html"]');
-  if (contactLink) contactLink.before(safetyLink, resourcesLink, enrollmentLink);
-  else mainNavigation.append(safetyLink, resourcesLink, enrollmentLink);
-}
 
 // Keep the About-page backdrop quietly responsive to a mouse without turning
 // the section into a distraction. Touch visitors get the composed resting view.
@@ -244,6 +236,24 @@ if (faqHero && !reduceMotion.matches) {
   window.addEventListener('scroll', requestFaqUpdate, { passive: true });
   window.addEventListener('resize', requestFaqUpdate, { passive: true });
   updateFaqParallax();
+}
+
+const safetyHero = document.querySelector('body:has(.resource-section) .inner-hero');
+if (safetyHero && !reduceMotion.matches) {
+  let safetyTicking = false;
+  const updateSafetyParallax = () => {
+    const bounds = safetyHero.getBoundingClientRect();
+    const viewport = window.innerHeight || document.documentElement.clientHeight;
+    const offset = Math.max(-30, Math.min(30, (bounds.top + bounds.height / 2 - viewport / 2) * -0.08));
+    safetyHero.style.setProperty('--safety-parallax', `${offset.toFixed(1)}px`);
+    safetyTicking = false;
+  };
+  const requestSafetyUpdate = () => {
+    if (!safetyTicking) { window.requestAnimationFrame(updateSafetyParallax); safetyTicking = true; }
+  };
+  window.addEventListener('scroll', requestSafetyUpdate, { passive: true });
+  window.addEventListener('resize', requestSafetyUpdate, { passive: true });
+  updateSafetyParallax();
 }
 
 const enrollmentHero = document.querySelector('.enrollment-hero');

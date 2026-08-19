@@ -6,3 +6,15 @@ body:has(.faq) .inner-hero::after{z-index:-1;inset:0;background:linear-gradient(
 body:has(.faq) .inner-hero>*{position:relative;z-index:1}body:has(.faq) .inner-hero>p:last-child{color:#40584c;font-weight:500}
 @media(max-width:760px){body:has(.faq) .inner-hero::before{inset:-42px 0;background-position:59% center}body:has(.faq) .inner-hero::after{background:linear-gradient(180deg,rgba(255,253,249,.94) 0%,rgba(255,253,249,.8) 100%),rgba(239,222,201,.16)}}
 @media(prefers-reduced-motion:reduce){body:has(.faq) .inner-hero::before{transform:scale(1.075);will-change:auto}}
+
+/* The linked Pexels safety image sits behind the page copy, softened with a
+   warm paper fade. The image moves independently on scroll for a subtle
+   sense of depth without compromising the hero's legibility. */
+body:has(.resource-section) .inner-hero{--safety-parallax:0px;position:relative;isolation:isolate;overflow:hidden;background:#e6e3da}
+body:has(.resource-section) .inner-hero::before,body:has(.resource-section) .inner-hero::after{content:"";position:absolute;pointer-events:none}
+body:has(.resource-section) .inner-hero::before{z-index:-2;inset:-68px 0;background:url('assets/safety-hero-pexels-249348.jpg') center 53%/cover no-repeat;filter:saturate(.64) contrast(.88) brightness(1.05);transform:translate3d(0,var(--safety-parallax),0) scale(1.08);will-change:transform}
+body:has(.resource-section) .inner-hero::after{z-index:-1;inset:0;background:linear-gradient(90deg,rgba(255,253,249,.96) 0%,rgba(255,253,249,.9) 43%,rgba(250,247,240,.7) 69%,rgba(250,247,240,.42) 100%),linear-gradient(180deg,rgba(244,223,209,.18),rgba(255,253,249,.12))}
+body:has(.resource-section) .inner-hero>*{position:relative;z-index:1}
+body:has(.resource-section) .inner-hero>p:last-child{color:#40584c;font-weight:500}
+@media(max-width:760px){body:has(.resource-section) .inner-hero::before{inset:-44px 0;background-position:61% center}body:has(.resource-section) .inner-hero::after{background:linear-gradient(180deg,rgba(255,253,249,.95) 0%,rgba(255,253,249,.8) 100%),rgba(239,222,201,.16)}}
+@media(prefers-reduced-motion:reduce){body:has(.resource-section) .inner-hero::before{transform:scale(1.08);will-change:auto}}
